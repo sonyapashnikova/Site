@@ -1,0 +1,13 @@
+.git
+.idea
+*.fig
+thumbnail*.png
+canvas.fig
+meta.json
+node_modules
+ai-sessions.zip
+*.docx
+README.md
+Dockerfile
+compose.yml
+.docx-extract
