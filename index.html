@@ -4,128 +4,165 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Визитка команды: участники, о нас, проекты и видеовизитка." />
+    <meta name="theme-color" content="#f5e4e9" />
     <title>Обучение — Будущее — Жизнь</title>
-    <link rel="stylesheet" href="styles.css?v=18" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400&family=Inter:wght@800&family=Open+Sans:ital,wght@0,400;0,600;1,700;1,800&family=Oswald:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="styles.css?v=22" />
+    <script src="script.js?v=20" defer></script>
   </head>
   <body>
-    <div class="site-viewport" id="site-viewport">
-      <div class="design-stage" id="design-stage">
-        <section class="artboard artboard-1" id="team" aria-label="Участники команды">
-          <header class="site-header" aria-label="Шапка сайта">
-          <nav class="nav-hotspots" aria-label="Навигация по сайту">
-            <a href="#team" aria-label="Участники"></a><a href="#about" aria-label="О нас"></a><a href="#projects" aria-label="Проекты"></a><a href="#video" aria-label="Видео"></a>
-          </nav>
-          </header>
-          <button type="button" class="card-hotspot card-1" aria-label="Карточка Бадаевой Цаганы" aria-pressed="false"><span class="card-name">Бадаева Цагана</span><span class="card-inner"><span class="card-front"><img class="card-photo" src="Цагана.png" alt="Бадаева Цагана"></span><span class="card-back"><strong>Бадаева Цагана</strong><span><b>Роль:</b> Fullstack, UX/UI</span><span><b>Почта:</b> 251086@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span></span><span class="card-hint">Нажмите на карточку</span></button>
-          <button type="button" class="card-hotspot card-2" aria-label="Карточка Пашниковой Софии" aria-pressed="false"><span class="card-name">Пашникова София</span><span class="card-inner"><span class="card-front"><img class="card-photo" src="София.jpg" alt="Пашникова София"></span><span class="card-back"><strong>Пашникова София</strong><span><b>Роль:</b> Fullstack, аналитик</span><span><b>Почта:</b> 251585@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span></span><span class="card-hint">Нажмите на карточку</span></button>
-          <button type="button" class="card-hotspot card-3" aria-label="Карточка Хорошиловой Полины" aria-pressed="false"><span class="card-name">Хорошилова Полина</span><span class="card-inner"><span class="card-front"><img class="card-photo" src="Полина.jpg" alt="Хорошилова Полина"></span><span class="card-back"><strong>Хорошилова Полина</strong><span><b>Роль:</b> Fullstack, дизайнер</span><span><b>Почта:</b> 251586@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span></span><span class="card-hint">Нажмите на карточку</span></button>
+    <h1 class="visually-hidden">Обучение — Будущее — Жизнь: визитка команды ОБЖ</h1>
 
-          <button type="button" class="card-hotspot card-4" aria-label="Карточка Мудрик Ксении" aria-pressed="false">
-            <span class="card-name">Мудрик Ксения</span>
-            <span class="card-inner">
-              <span class="card-front"><img class="card-photo" src="Ксения_МКО.jpg" alt="Мудрик Ксения"></span>
-              <span class="card-back">
-                <strong>Мудрик Ксения</strong>
-                <span><b>Роль:</b> Frontend-разработчик</span>
-                <span><b>Почта:</b> 251587@edu.fa.ru</span>
-                <span><b>Группа:</b> ПИ25-4</span>
-              </span>
-            </span>
-            <span class="card-hint">Нажмите на карточку</span>
-          </button>
-        </section>
-
-        <section class="artboard artboard-2" id="about" aria-label="О нас">
-          <header class="site-header" aria-label="Шапка сайта">
-          <nav class="nav-hotspots" aria-label="Навигация по сайту">
-            <a href="#team" aria-label="Участники"></a><a href="#about" aria-label="О нас"></a><a href="#projects" aria-label="Проекты"></a><a href="#video" aria-label="Видео"></a>
+    <!-- Единственная шапка: фиксирована вверху, не участвует в анимациях секций -->
+    <header class="site-header">
+      <div class="hdr-box">
+        <div class="hdr-stage">
+          <nav class="nav" aria-label="Навигация по сайту">
+            <a href="#team">Участники</a>
+            <a href="#about">О нас</a>
+            <a href="#projects">Проекты</a>
+            <a href="#video">Видео</a>
           </nav>
-          </header>
-        </section>
+          <a class="brand" href="#team">
+            <span class="slogan"><span>Обучение<i>-</i></span><span>Будущее<i>-</i>Жизнь</span></span>
+            <span class="abbr">ОБЖ</span>
+            <img class="logo" src="assets/img/logo.png" width="450" height="300" alt="" />
+            <span class="visually-hidden">— на главную</span>
+          </a>
+          <div class="lace lace-head" aria-hidden="true"></div>
+        </div>
+      </div>
+    </header>
 
-        <section class="artboard artboard-3" id="projects" aria-label="Проекты">
-          <header class="site-header" aria-label="Шапка сайта">
-          <nav class="nav-hotspots" aria-label="Навигация по сайту">
-            <a href="#team" aria-label="Участники"></a><a href="#about" aria-label="О нас"></a><a href="#projects" aria-label="Проекты"></a><a href="#video" aria-label="Видео"></a>
-          </nav>
-          </header>
-          <div class="projects-content" aria-labelledby="projects-title">
-            <h2 id="projects-title">Проекты команды</h2>
-            <div class="project-grid">
-            <article class="project-card">
-              <h3>CRM для ИТ-сообщества</h3>
-              <p>CRM для ИТ-сообщества.</p>
-            </article>
-            <article class="project-card">
-              <h3>3D-моделирование мемориальных комплексов</h3>
-              <p>Сайт с 3D-моделированием мемориальных комплексов.</p>
-            </article>
-            <article class="project-card">
-              <h3>Бот для подбора кино и сериалов</h3>
-              <p>Подбор кино или сериала с помощью ИИ.</p>
-            </article>
-            <article class="project-card">
-              <h3>Бот для подбора мероприятий</h3>
-              <p>Бот для подбора мероприятий.</p>
-            </article>
-            <article class="project-card">
-              <h3>Умный планировщик</h3>
-              <p>Умный планировщик со множеством встроенных функций.</p>
-            </article>
-            <article class="project-card">
-              <h3>Тестирование студентов</h3>
-              <p>Система для проведения тестирования студентов с последующим комплексным анализом для преподавателя.</p>
-            </article>
-            <article class="project-card">
-              <h3>Автоматизация документов</h3>
-              <p>Проект для оптимизации рутинной работы преподавателя по заполнению документов.</p>
-            </article>
-            <article class="project-card">
-              <h3>Доступный ВУЗ</h3>
-              <p>Веб-приложение: электронный студенческий билет, зачётная книжка и система мониторинга успеваемости.</p>
-            </article>
-            <article class="project-card">
-              <h3>FinLake</h3>
-              <p class="project-context">AI-ассистент для университетских данных · командный хакатон на Байкале</p>
-              <p>Сервис преобразует вопросы на естественном языке в SQL с помощью YandexGPT, проверяет запрос перед выполнением в PostgreSQL и возвращает результат. Реализованы ролевой доступ, авторизация, история диалогов и ограничения SQL.</p>
-              <p class="project-stack"><b>Стек:</b> Python, FastAPI, PostgreSQL, YandexGPT, Docker Compose, HTML/CSS/JavaScript.</p>
-            </article>
-            <article class="project-card">
-              <h3>Course Feedback Analyzer</h3>
-              <p class="project-context">Анализ отзывов с ML · командный проект</p>
-              <p>Анализирует русскоязычные отзывы об IT-курсах: две модели TF-IDF + Logistic Regression классифицируют тональность и тему текста. Интерфейс Streamlit показывает статистику и проблемные аспекты курсов.</p>
-              <p>Учебный датасет синтетический; результаты не подтверждают качество на реальных отзывах.</p>
-              <p class="project-stack"><b>Стек:</b> Python, scikit-learn, pandas, Streamlit.</p>
-            </article>
-            <article class="project-card">
-              <h3>AI Culinary Assistant</h3>
-              <p class="project-context">Telegram-бот подбора рецептов · проектный практикум</p>
-              <p>Рабочий Telegram-бот подбирает рецепты из русскоязычной базы по доступным продуктам, предлагает варианты блюд и пересчитывает ингредиенты под число порций.</p>
-              <p>Ручной ввод продуктов реализован и проверен; распознавание по фото ограничено доступностью AI API.</p>
-              <p class="project-stack"><b>Стек:</b> Python, aiogram, SQLite, Telegram Bot API.</p>
-            </article>
+    <main>
+      <!-- 1. Участники -->
+      <section class="sec sec-team" id="team" aria-labelledby="team-title">
+        <div class="stage">
+          <h2 class="title" id="team-title">Участники команды</h2>
+
+          <ul class="cards">
+            <li>
+              <button type="button" class="card" aria-label="Карточка Бадаевой Цаганы" aria-pressed="false">
+                <span class="card-name">Бадаева Цагана</span>
+                <span class="card-inner">
+                  <span class="card-front"><img class="card-photo" src="Цагана.png" alt="Бадаева Цагана" width="270" height="440" decoding="async" /></span>
+                  <span class="card-back"><strong>Бадаева Цагана</strong><span><b>Роль:</b> Fullstack, UX/UI</span><span><b>Почта:</b> 251086@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span>
+                </span>
+                <span class="card-hint">Нажмите на карточку</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="card" aria-label="Карточка Пашниковой Софии" aria-pressed="false">
+                <span class="card-name">Пашникова София</span>
+                <span class="card-inner">
+                  <span class="card-front"><img class="card-photo" src="София.jpg" alt="Пашникова София" width="270" height="440" decoding="async" /></span>
+                  <span class="card-back"><strong>Пашникова София</strong><span><b>Роль:</b> Fullstack, аналитик</span><span><b>Почта:</b> 251585@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span>
+                </span>
+                <span class="card-hint">Нажмите на карточку</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="card" aria-label="Карточка Хорошиловой Полины" aria-pressed="false">
+                <span class="card-name">Хорошилова Полина</span>
+                <span class="card-inner">
+                  <span class="card-front"><img class="card-photo" src="Полина.jpg" alt="Хорошилова Полина" width="270" height="440" decoding="async" /></span>
+                  <span class="card-back"><strong>Хорошилова Полина</strong><span><b>Роль:</b> Fullstack, дизайнер</span><span><b>Почта:</b> 251586@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span>
+                </span>
+                <span class="card-hint">Нажмите на карточку</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="card card-4" aria-label="Карточка Мудрик Ксении" aria-pressed="false">
+                <span class="card-name">Мудрик Ксения</span>
+                <span class="card-inner">
+                  <span class="card-front"><img class="card-photo" src="Ксения_МКО.jpg" alt="Мудрик Ксения" width="270" height="440" decoding="async" /></span>
+                  <span class="card-back"><strong>Мудрик Ксения</strong><span><b>Роль:</b> Frontend-разработчик</span><span><b>Почта:</b> 251587@edu.fa.ru</span><span><b>Группа:</b> ПИ25-4</span></span>
+                </span>
+                <span class="card-hint">Нажмите на карточку</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. О нас -->
+      <section class="sec sec-about" id="about" aria-labelledby="about-title">
+        <div class="stage">
+          <h2 class="title about-title" id="about-title">О нас</h2>
+
+          <div class="note note-about">
+            <p>Мы&nbsp;— студентки Финансового университета при Правительстве РФ, участницы Информационно-технологического сообщества нашего ВУЗа. Обучаемся по профилю «Прикладные информационные системы в экономике и финансах»&nbsp;— это направление входит в программу ТОП-ИТ! Мы решили участвовать в хакатоне ВОЛГА.ТОП, потому что считаем, что это&nbsp;— прекрасная возможность, благодаря которой можно продемонстрировать свои навыки, а также получить множество новых знаний и практического опыта.</p>
+          </div>
+          <img class="tape tape-about" src="assets/img/tape.png" width="252" height="448" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+
+          <h3 class="title skills-title">Навыки<br />команды:</h3>
+          <div class="note note-skills">
+            <ul>
+              <li>Python, Java, JavaScript,</li>
+              <li>HTML/CSS, SQL, UML,</li>
+              <li>BPMN, API, Figma, React,</li>
+              <li>1С, Docker, UX/UI.</li>
+            </ul>
+          </div>
+          <img class="tape tape-skills" src="assets/img/tape.png" width="252" height="448" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </div>
+      </section>
+
+      <!-- 3. Проекты -->
+      <section class="sec sec-projects" id="projects" aria-labelledby="projects-title">
+        <div class="stage">
+          <h2 class="title" id="projects-title">Проекты</h2>
+
+          <div class="frame">
+            <img class="frame-art" src="assets/img/frame.png" width="1500" height="844" alt="" loading="lazy" decoding="async" />
+            <p class="frame-text">Проекты: <span class="serif">CRM</span> для ИТ-сообщества, сайт с <span class="serif">3D</span>-моделирование мемориальных комплексов, бот для подбора кино или сериала с помощью ИИ, бот для подбора мероприятий, умный планировщик со множеством встроенных функций, система для проведения тестирования студентов с последующим комплексным анализом для преподавателя, проект для оптимизации рутинной работы преподавателя по заполнению документов, сервисы веб-приложение «Доступный ВУЗ»:<br />электронный студенческий билет, зачётная книжка, система мониторинга успеваемости.</p>
+          </div>
+
+          <div class="motto" role="marquee" aria-label="Девиз: объезжаем баги жёстко!!!">
+            <div class="motto-track" aria-hidden="true">
+              <span>Девиз:&ensp;объезжаем баги жёстко!!!</span><span>Девиз:&ensp;объезжаем баги жёстко!!!</span><span>Девиз:&ensp;объезжаем баги жёстко!!!</span><span>Девиз:&ensp;объезжаем баги жёстко!!!</span>
             </div>
           </div>
-          <div class="motto-mask" aria-hidden="true"><div class="motto-track">Девиз: объезжаем баги жёстко!!! <span>Девиз: объезжаем баги жёстко!!!</span></div></div>
-        </section>
+        </div>
+      </section>
 
-        <section class="artboard artboard-4" id="video" aria-label="Видеовизитка и контакты">
-          <header class="site-header" aria-label="Шапка сайта">
-          <nav class="nav-hotspots" aria-label="Навигация по сайту">
-            <a href="#team" aria-label="Участники"></a><a href="#about" aria-label="О нас"></a><a href="#projects" aria-label="Проекты"></a><a href="#video" aria-label="Видео"></a>
-          </nav>
-          </header>
-          <footer class="visual-footer" aria-label="Подвал сайта и контакты">
-            <div class="contact-hotspots" aria-label="Контакты">
-            <a href="mailto:251585@edu.fa.ru" aria-label="251585@edu.fa.ru"></a>
-            <a href="mailto:251586@edu.fa.ru" aria-label="251586@edu.fa.ru"></a>
-            <a href="mailto:251086@edu.fa.ru" aria-label="251086@edu.fa.ru"></a>
+      <!-- 4. Видео и контакты -->
+      <section class="sec sec-video" id="video" aria-labelledby="video-title">
+        <div class="stage">
+          <h2 class="title" id="video-title">Видеовизитка</h2>
+
+          <figure class="camera">
+            <img class="camera-art" src="assets/img/camera.png" width="1400" height="933" alt="" loading="lazy" decoding="async" />
+            <div class="video-slot">
+              <video controls playsinline preload="metadata" aria-label="Видеовизитка команды">
+                <source src="IMG_2063.mp4" type="video/mp4" />
+                <source src="IMG_2063.MOV" type="video/quicktime" />
+                Ваш браузер не воспроизводит это видео. <a href="IMG_2063.MOV">Скачать файл</a>.
+              </video>
             </div>
-            <a class="member-footer-contact" href="mailto:251587@edu.fa.ru">Мудрик Ксения · 251587@edu.fa.ru</a>
-          </footer>
-        </section>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- Подвал: фиксирован внизу, виден на всех экранах -->
+    <footer class="site-footer">
+      <div class="ftr-box">
+        <div class="ftr-stage">
+          <div class="lace lace-foot" aria-hidden="true"></div>
+          <a class="repo" href="https://gitverse.ru/tsaganabadl/volgatop" rel="noopener">Ссылка на репозиторий</a>
+          <div class="contacts">
+            <p>Контакты для связи:</p>
+            <ul>
+              <li><a href="mailto:251585@edu.fa.ru">251585@edu.fa.ru</a></li>
+              <li><a href="mailto:251586@edu.fa.ru">251586@edu.fa.ru</a></li>
+              <li><a href="mailto:251086@edu.fa.ru">251086@edu.fa.ru</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <script src="script.js?v=18"></script>
+    </footer>
   </body>
 </html>

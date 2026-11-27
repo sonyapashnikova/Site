@@ -1,131 +1,47 @@
-const viewport = document.querySelector('#site-viewport');
-const artboards = [...document.querySelectorAll('.artboard')];
-const DESIGN_VIEWPORT = 1280;
-const stage = document.querySelector('#design-stage');
-const projectsContent = document.querySelector('.projects-content');
-const getScale = () => window.innerWidth / DESIGN_VIEWPORT;
-
-document.querySelectorAll('.card-hotspot').forEach((card) => {
-  const toggleCard = () => {
-    const flipped = card.classList.toggle('is-flipped');
-    card.setAttribute('aria-pressed', String(flipped));
-  };
-  card.addEventListener('click', toggleCard);
-  card.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggleCard();
-    }
+// Переворот карточек: состояние живёт в aria-pressed, анимация — в CSS.
+document.querySelectorAll('.card').forEach((card) => {
+  card.addEventListener('click', () => {
+    card.setAttribute('aria-pressed', String(card.getAttribute('aria-pressed') !== 'true'));
   });
 });
 
-function replayReveal(artboard) {
-  if (!artboard) return;
-  artboard.classList.remove('is-visible');
-  void artboard.offsetWidth;
-  requestAnimationFrame(() => artboard.classList.add('is-visible'));
-}
-
-function fitDesign() {
-  const scale = getScale();
-  document.documentElement.style.setProperty('--scale', scale);
-  const extraTeamHeight = artboards[0].offsetHeight - 832;
-  artboards[1].style.top = `${915 + extraTeamHeight}px`;
-  artboards[2].style.top = `${1822 + extraTeamHeight}px`;
-  artboards[2].style.height = `${projectsContent.offsetTop + projectsContent.offsetHeight + 170}px`;
-  artboards[3].style.top = `${artboards[2].offsetTop + artboards[2].offsetHeight + 109}px`;
-  stage.style.height = `${artboards[3].offsetTop + artboards[3].offsetHeight}px`;
-  viewport.style.height = `${stage.offsetHeight * scale}px`;
-  updateScrollMotion();
-}
-
-let motionFrame = 0;
-function updateScrollMotion() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const scale = getScale();
-  const viewportCenter = window.scrollY + window.innerHeight / 2;
-
-  artboards.forEach((artboard, index) => {
-    const sectionTop = artboard.offsetTop * scale;
-    const sectionHeight = artboard.offsetHeight * scale;
-    const sectionCenter = sectionTop + sectionHeight / 2;
-    const distance = (viewportCenter - sectionCenter) / Math.max(window.innerHeight, 1);
-    const clamp = (value, limit) => Math.max(-limit, Math.min(limit, value));
-
-    artboard.style.setProperty('--bg-shift', `${clamp(distance * 42, 42)}px`);
-    artboard.style.setProperty('--header-drift', `${clamp(distance * 10, 10)}px`);
-    artboard.style.setProperty('--footer-drift', `${clamp(distance * -12, 12)}px`);
-    artboard.style.setProperty('--motto-drift', `${clamp(distance * 16, 16)}px`);
-    artboard.style.setProperty('--card-drift', `${clamp(distance * (10 + index * 3), 18)}px`);
-  });
-}
-
-function requestScrollMotion() {
-  if (motionFrame) return;
-  motionFrame = requestAnimationFrame(() => {
-    motionFrame = 0;
-    updateScrollMotion();
-  });
-}
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (event) => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (!target) return;
-    event.preventDefault();
-    const scale = getScale();
-    window.scrollTo({ top: target.offsetTop * scale, behavior: 'smooth' });
-    replayReveal(target);
-    history.replaceState(null, '', link.getAttribute('href'));
-  });
-});
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const artboard = entry.target;
-
-    if (entry.isIntersecting && !artboard.dataset.inView) {
-      artboard.dataset.inView = 'true';
-      replayReveal(artboard);
-    }
-
-    if (!entry.isIntersecting) {
-      delete artboard.dataset.inView;
-      artboard.classList.remove('is-visible');
-    }
-  });
-}, { threshold: 0.18 });
-
-let activeArtboard = null;
-function revealAtViewportCenter() {
-  const scale = getScale();
-  const center = window.scrollY + window.innerHeight / 2;
-  const next = artboards.find((artboard) => {
-    const top = artboard.offsetTop * scale;
-    const bottom = top + artboard.offsetHeight * scale;
-    return center >= top && center <= bottom;
-  });
-  if (next !== activeArtboard) {
-    activeArtboard = next;
-    if (next) replayReveal(next);
+// Подсветка текущего раздела в шапке (aria-current + подчёркивание в CSS).
+const links = new Map([...document.querySelectorAll('.nav a')].map((a) => [a.hash.slice(1), a]));
+const spy = new IntersectionObserver((entries) => {
+  for (const { isIntersecting, target } of entries) {
+    if (!isIntersecting) continue;
+    links.forEach((a, id) => (id === target.id ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current')));
   }
-}
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('.sec').forEach((s) => spy.observe(s));
 
-document.querySelectorAll('.artboard').forEach((artboard) => revealObserver.observe(artboard));
+// Один жест колеса = одна секция (десктоп, где секция помещается в экран).
+// Клавиатура и тач работают через CSS scroll-snap; на мобильных секции выше экрана — нативный скролл.
+const sections = [...document.querySelectorAll('.sec')];
+const desktop = matchMedia('(min-width: 761px)');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+let busy = false;
+let lastWheel = 0;
+let failsafe = 0;
 
-// The first screen must be visible immediately on initial load.
-artboards[0]?.classList.add('is-visible');
+const release = () => {
+  if (performance.now() - lastWheel > 120) busy = false;
+  else setTimeout(release, 60); // ждём конца инерции трекпада
+};
+addEventListener('scrollend', () => busy && release());
 
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  artboards.forEach((artboard) => artboard.classList.add('is-visible'));
-}
+addEventListener('wheel', (event) => {
+  if (!desktop.matches || event.ctrlKey || event.deltaY === 0) return;
+  event.preventDefault();
+  lastWheel = performance.now();
+  if (busy) return;
 
-window.addEventListener('resize', fitDesign);
-window.addEventListener('scroll', () => {
-  revealAtViewportCenter();
-  requestScrollMotion();
-}, { passive: true });
-fitDesign();
-revealAtViewportCenter();
+  const current = Math.round(scrollY / innerHeight);
+  const next = Math.min(sections.length - 1, Math.max(0, current + Math.sign(event.deltaY)));
+  if (next === current) return;
 
-window.addEventListener('load', fitDesign);
+  busy = true;
+  clearTimeout(failsafe);
+  failsafe = setTimeout(() => { busy = false; }, 1500);
+  sections[next].scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth' });
+}, { passive: false });
