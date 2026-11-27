@@ -109,3 +109,51 @@ button, a { font: inherit; }
   .card-3 { top: 285px; }
   .card-inner { transition: none; }
 }
+
+
+/* Four participants; names and hints are editable HTML. */
+.artboard-1::before { height: 832px; }
+.artboard-1 .card-hotspot { top: calc(289px + var(--card-drift, 0px)); width: 270px; height: 440px; }
+.artboard-1 .card-1 { left: 40px; }
+.artboard-1 .card-2 { left: 350px; }
+.artboard-1 .card-3 { left: 660px; }
+.artboard-1 .card-4 { left: 970px; animation-delay: 570ms; }
+.card-front { background: #fff; }
+.card-name { position: absolute; left: 0; top: -44px; width: 100%; color: #000; font: 22px/1.25 Arial, sans-serif; text-align: center; }
+.card-hint { position: absolute; left: 0; bottom: -32px; width: 100%; color: #666; font: 18px/1.3 Arial, sans-serif; text-align: center; }
+.artboard-1 .card-back { padding: 24px 18px; font-size: 17px; overflow-wrap: anywhere; }
+.card-4 .card-photo { object-position: 50% 42%; }
+.member-projects { position: absolute; top: 2700px; left: 60px; width: 1160px; padding: 30px; border: 1px solid #000; background: #f5e4eb; color: #000; font: 18px/1.5 Arial, sans-serif; }
+.member-projects h2 { margin: 0 0 24px; font-size: 30px; line-height: 1.2; }
+.member-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.member-project { min-width: 0; padding: 22px; border: 1px solid #222; background: #fff; }
+.member-project h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; overflow-wrap: anywhere; }
+.member-project p { margin: 0 0 14px; }
+.member-project p:last-child { margin-bottom: 0; }
+.project-context { color: #444; }
+.project-stack { overflow-wrap: anywhere; }
+.member-project-contact { display: inline-block; margin-top: 24px; color: #000; }
+.member-footer-contact { position: absolute; bottom: 6px; left: 16px; z-index: 4; padding: 2px 4px; background: #f5e4e9; color: #333; font: 18px/1.3 Arial, sans-serif; }
+@media (max-width: 760px) {
+  .artboard-1 { height: 1780px; background: #f5e4eb; }
+  .artboard-1::after { content: ""; display: block; position: absolute; z-index: 1; left: 0; top: 755px; width: 100%; height: 90px; background: #f5e4eb; pointer-events: none; }
+  .artboard-1 .card-hotspot { top: 310px; width: 540px; height: 600px; }
+  .artboard-1 .card-1, .artboard-1 .card-3 { left: 50px; }
+  .artboard-1 .card-2, .artboard-1 .card-4 { left: 690px; }
+  .artboard-1 .card-3, .artboard-1 .card-4 { top: 1080px; }
+  .card-name { top: -70px; font-size: 40px; }
+  .card-hint { bottom: -48px; font-size: 34px; }
+  .artboard-1 .card-back { gap: 22px; padding: 36px; font-size: 40px; }
+  .artboard-1 .card-back strong { font-size: 48px; }
+  .card-photo { object-position: 50% 35%; }
+  .member-projects { padding: 40px; font-size: 42px; line-height: 1.45; }
+  .member-projects h2 { font-size: 54px; margin-bottom: 32px; }
+  .member-project-grid { grid-template-columns: 1fr; gap: 30px; }
+  .member-project { padding: 36px; }
+  .member-project h3 { font-size: 48px; }
+  .member-project p { margin-bottom: 24px; }
+  .member-project-contact { overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artboard-1 .card-hotspot { animation: none !important; }
+}
