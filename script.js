@@ -2,7 +2,7 @@ const viewport = document.querySelector('#site-viewport');
 const artboards = [...document.querySelectorAll('.artboard')];
 const DESIGN_VIEWPORT = 1280;
 const stage = document.querySelector('#design-stage');
-const memberProjects = document.querySelector('#ksenia-projects');
+const projectsContent = document.querySelector('.projects-content');
 const getScale = () => window.innerWidth / DESIGN_VIEWPORT;
 
 document.querySelectorAll('.card-hotspot').forEach((card) => {
@@ -32,8 +32,8 @@ function fitDesign() {
   const extraTeamHeight = artboards[0].offsetHeight - 832;
   artboards[1].style.top = `${915 + extraTeamHeight}px`;
   artboards[2].style.top = `${1822 + extraTeamHeight}px`;
-  memberProjects.style.top = `${2700 + extraTeamHeight}px`;
-  artboards[3].style.top = `${Math.max(2763 + extraTeamHeight, memberProjects.offsetTop + memberProjects.offsetHeight + 90)}px`;
+  artboards[2].style.height = `${projectsContent.offsetTop + projectsContent.offsetHeight + 170}px`;
+  artboards[3].style.top = `${artboards[2].offsetTop + artboards[2].offsetHeight + 109}px`;
   stage.style.height = `${artboards[3].offsetTop + artboards[3].offsetHeight}px`;
   viewport.style.height = `${stage.offsetHeight * scale}px`;
   updateScrollMotion();

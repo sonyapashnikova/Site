@@ -123,16 +123,15 @@ button, a { font: inherit; }
 .card-hint { position: absolute; left: 0; bottom: -32px; width: 100%; color: #666; font: 18px/1.3 Arial, sans-serif; text-align: center; }
 .artboard-1 .card-back { padding: 24px 18px; font-size: 17px; overflow-wrap: anywhere; }
 .card-4 .card-photo { object-position: 50% 42%; }
-.member-projects { position: absolute; top: 2700px; left: 60px; width: 1160px; padding: 30px; border: 1px solid #000; background: #f5e4eb; color: #000; font: 18px/1.5 Arial, sans-serif; }
-.member-projects h2 { margin: 0 0 24px; font-size: 30px; line-height: 1.2; }
-.member-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.member-project { min-width: 0; padding: 22px; border: 1px solid #222; background: #fff; }
-.member-project h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; overflow-wrap: anywhere; }
-.member-project p { margin: 0 0 14px; }
-.member-project p:last-child { margin-bottom: 0; }
+.projects-content { position: absolute; z-index: 2; top: 160px; left: 60px; width: 1160px; padding: 30px; border: 1px solid #000; background: #f5e4eb; color: #000; font: 18px/1.5 Arial, sans-serif; }
+.projects-content h2 { margin: 0 0 24px; font-size: 30px; line-height: 1.2; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.project-card { min-width: 0; padding: 22px; border: 1px solid #222; background: #fff; }
+.project-card h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; overflow-wrap: anywhere; }
+.project-card p { margin: 0 0 14px; }
+.project-card p:last-child { margin-bottom: 0; }
 .project-context { color: #444; }
 .project-stack { overflow-wrap: anywhere; }
-.member-project-contact { display: inline-block; margin-top: 24px; color: #000; }
 .member-footer-contact { position: absolute; bottom: 6px; left: 16px; z-index: 4; padding: 2px 4px; background: #f5e4e9; color: #333; font: 18px/1.3 Arial, sans-serif; }
 @media (max-width: 760px) {
   .artboard-1 { height: 1780px; background: #f5e4eb; }
@@ -146,14 +145,16 @@ button, a { font: inherit; }
   .artboard-1 .card-back { gap: 22px; padding: 36px; font-size: 40px; }
   .artboard-1 .card-back strong { font-size: 48px; }
   .card-photo { object-position: 50% 35%; }
-  .member-projects { padding: 40px; font-size: 42px; line-height: 1.45; }
-  .member-projects h2 { font-size: 54px; margin-bottom: 32px; }
-  .member-project-grid { grid-template-columns: 1fr; gap: 30px; }
-  .member-project { padding: 36px; }
-  .member-project h3 { font-size: 48px; }
-  .member-project p { margin-bottom: 24px; }
-  .member-project-contact { overflow-wrap: anywhere; }
+  .projects-content { padding: 40px; font-size: 42px; line-height: 1.45; }
+  .projects-content h2 { font-size: 54px; margin-bottom: 32px; }
+  .project-grid { grid-template-columns: 1fr; gap: 30px; }
+  .project-card { padding: 36px; }
+  .project-card h3 { font-size: 48px; }
+  .project-card p { margin-bottom: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .artboard-1 .card-hotspot { animation: none !important; }
 }
+
+/* The shared project list lives inside the existing Projects section. */
+.artboard-3::before { height: 120px; }
